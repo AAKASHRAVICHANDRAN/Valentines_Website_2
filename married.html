@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We're Getting Married! 💍</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="married-page-container">
+        <div class="wedding-hearts">
+            <div class="heart">💍</div>
+            <div class="heart">💖</div>
+            <div class="heart">👰</div>
+            <div class="heart">🤵</div>
+            <div class="heart">💕</div>
+            <div class="heart">🌹</div>
+            <div class="heart">✨</div>
+            <div class="heart">🎉</div>
+            <div class="heart">💐</div>
+        </div>
+
+        <div class="married-content">
+            <h1 class="wedding-title">We're Married! 💍</h1>
+
+        <div class="top-video">
+            <video autoplay muted loop playsinline>
+                <source src="videos/married.mp4" type="video/mp4">
+            </video>
+        </div>
+
+            <div class="celebration-message">
+                <p class="main-celebration">WE DID IT! 🎉</p>
+                <p class="sub-celebration">Our beautiful love story continues as husband and wife...</p>
+            </div>
+
+            <div class="wedding-icons">
+                💍 👰 🤵 💐 🎊 🥂 💕
+            </div>
+
+
+            <!-- Love Declaration -->
+            <div class="love-declaration">
+                <h2>My Promise to You</h2>
+                <blockquote>
+                    "From this moment forward, I promise to love you through every sunrise and sunset,
+                    through every laugh and every tear, through every adventure and every quiet moment.
+                    You are my heart, my soul, my everything. I can't wait to call you my wife and
+                    spend forever showing you just how much you mean to me." 💕
+                </blockquote>
+            </div>
+
+
+            <!-- Wedding Pictures Section -->
+            <div class="wedding-pictures-section">
+                <h3
+                    style="text-align: center; font-family: 'Dancing Script', cursive; font-size: 2rem; color: #ff6b9d; margin: 2rem 0;">
+                    Create Our Wedding Memories and add here!💕📸</h3>
+                <div class="wedding-photo-gallery">
+                    <div class="wedding-photo">
+                        <img src="images/wedding1.jpg" alt="Wedding Photo 1"
+                            onerror="this.src='https://via.placeholder.com/300x200/ff6b9d/white?text=Wedding+Photo+1'">
+                    </div>
+                    <div class="wedding-photo">
+                        <img src="images/wedding2.jpg" alt="Wedding Photo 2"
+                            onerror="this.src='https://via.placeholder.com/300x200/ffa8cc/white?text=Wedding+Photo+2'">
+                    </div>
+                    <div class="wedding-photo">
+                        <img src="images/wedding3.jpg" alt="Wedding Photo 3"
+                            onerror="this.src='https://via.placeholder.com/300x200/ff6b9d/white?text=Wedding+Photo+3'">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family Question Section -->
+            <div class="family-section">
+                <div class="family-question">
+                    <h2 class="family-title"
+                        style="font-weight: bold; font-size: 2.5rem; text-align: center; margin: 2rem 0;">Should we
+                        start building our family? 👨‍👩‍👧‍👦</h2>
+                </div>
+
+                <!-- Family Response Buttons -->
+                <div class="family-response-section"
+                    style="display: flex; justify-content: center; gap: 2rem; margin: 2rem 0;">
+                    <button id="familyYesBtn" class="family-yes-btn" onclick="goToFamilyPage()" style="
+                        background: linear-gradient(45deg, #ff6b9d, #ffa8cc);
+                        color: white;
+                        border: none;
+                        padding: 1.5rem 3rem;
+                        border-radius: 50px;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        font-family: 'Dancing Script', cursive;
+                        cursor: pointer;
+                        box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+                        transition: all 0.3s ease;
+                        transform: scale(1);
+                    ">
+                        Yes! Let's build a family! 👶💕
+                    </button>
+
+                    <button id="familyNoBtn" class="family-no-btn" style="
+                        background: linear-gradient(45deg, #e74c3c, #c0392b);
+                        color: white;
+                        border: none;
+                        padding: 1.5rem 3rem;
+                        border-radius: 50px;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        font-family: 'Dancing Script', cursive;
+                        cursor: pointer;
+                        box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+                        transition: all 0.3s ease;
+                        transform: scale(1);
+                    ">
+                        No
+                    </button>
+                </div>
+
+                <div class="family-note">
+                    <p>✨ Little hands, little feet, our family will be complete ✨</p>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="back-btn" onclick="goBack()">
+                    ← Back to proposal
+                </button>
+
+                <button class="home-btn" onclick="goHome()">
+                    🏠 Start over
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="music/marriage_melody.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Mobile Music Play Button -->
+    <div id="musicToggle" class="music-toggle" style="display: none;">
+        <button onclick="playMusic()" id="musicBtn">🎵 Play Music</button>
+    </div>
+
+    <script>
+        // Mobile-friendly music handling
+        let musicPlaying = false;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicBtn = document.getElementById('musicBtn');
+
+        // Try autoplay on desktop - show button if autoplay fails (mobile)
+        backgroundMusic.play().then(() => {
+            musicPlaying = true;
+            // Limit music to 200 seconds
+            setTimeout(() => {
+                if (musicPlaying) {
+                    backgroundMusic.pause();
+                    musicPlaying = false;
+                }
+            }, 200000);
+        }).catch(() => {
+            // Autoplay failed (mobile), show play button
+            document.getElementById('musicToggle').style.display = 'block';
+        });
+
+        function playMusic() {
+            if (!musicPlaying) {
+                backgroundMusic.play();
+                musicPlaying = true;
+                document.getElementById('musicToggle').style.display = 'none';
+                // Limit music to 200 seconds
+                setTimeout(() => {
+                    if (musicPlaying) {
+                        backgroundMusic.pause();
+                        musicPlaying = false;
+                    }
+                }, 200000);
+            }
+        }
+
+
+        // Add massive celebration when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            createWeddingCelebration();
+            startHeartRain();
+            initializeFamilyNoButton();
+            initializeWeddingGallery();
+            startRomanticRain();  
+
+            // Add click effects
+            document.addEventListener('click', function (e) {
+                if (e.target.tagName !== 'BUTTON') {
+                    createWeddingHeart(e.clientX, e.clientY);
+                }
+            });
+        });
+
+       
+
+        // Initialize the impossible "No" button for family question
+        function initializeFamilyNoButton() {
+            const noBtn = document.getElementById('familyNoBtn');
+            if (!noBtn) return;
+
+            let attemptCount = 0;
+            const funnyMessages = [
+                "But we need little ones! 👶",
+                "Think of the tiny hands and feet! 👣",
+                "Our family tree needs more branches! 🌳",
+                "Who will carry on our love story? 💕",
+                "But imagine mini versions of us! 🥰",
+                "The 'No' button is baby-proofed! 🍼",
+                "Error: Family.exe requires 'Yes'! 💻",
+                "Little hearts are waiting to join us! 💖",
+                "Our love is too big for just two! 👨‍👩‍👧‍👦"
+            ];
+
+            // Disable the button completely and make it funny
+            noBtn.addEventListener('mouseenter', function () {
+                showFamilyMessage();
+                shakeFamilyButton();
+            });
+
+            noBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                showFamilyMessage();
+                shakeFamilyButton();
+                attemptCount++;
+
+                if (attemptCount >= 3) {
+                    transformFamilyNoButton();
+                }
+            });
+
+            function showFamilyMessage() {
+                const randomMessage = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+                showTemporaryFamilyMessage(randomMessage);
+            }
+
+            function shakeFamilyButton() {
+                noBtn.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    noBtn.style.animation = '';
+                }, 500);
+            }
+
+            function transformFamilyNoButton() {
+                noBtn.textContent = "Yes! Let's have babies! 👶💕";
+                noBtn.style.background = 'linear-gradient(45deg, #ff6b9d, #ffa8cc)';
+                noBtn.style.animation = 'pulse 1s ease-in-out infinite';
+                noBtn.onclick = goToFamilyPage;
+
+                showTemporaryFamilyMessage("Perfect! Our family awaits! 👨‍👩‍👧‍👦");
+            }
+        }
+
+        // Show temporary family message
+        function showTemporaryFamilyMessage(text) {
+            const message = document.createElement('div');
+            message.textContent = text;
+            message.style.position = 'fixed';
+            message.style.top = '20px';
+            message.style.left = '50%';
+            message.style.transform = 'translateX(-50%)';
+            message.style.background = 'rgba(255, 107, 157, 0.9)';
+            message.style.color = 'white';
+            message.style.padding = '1rem 2rem';
+            message.style.borderRadius = '25px';
+            message.style.fontSize = '1.2rem';
+            message.style.fontFamily = 'Dancing Script, cursive';
+            message.style.fontWeight = '700';
+            message.style.zIndex = '2000';
+            message.style.animation = 'slideDown 0.5s ease-out';
+
+            document.body.appendChild(message);
+
+            setTimeout(() => {
+                message.style.animation = 'slideUp 0.5s ease-in';
+                setTimeout(() => {
+                    message.remove();
+                }, 500);
+            }, 2500);
+        }
+
+        function goBack() {
+            window.location.href = 'yes.html';
+        }
+
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        function goToFamilyPage() {
+            window.location.href = 'family.html';
+        }
+
+        function createWeddingCelebration() {
+            // Create a massive burst of celebration
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    createWeddingHeart(x, y);
+                }, i * 100);
+            }
+        }
+
+        function createWeddingHeart(x, y) {
+            const weddingEmojis = ['💍', '💖', '👰', '🤵', '💐', '🎊', '✨', '💕', '🌹', '🥂', '🎉'];
+            const randomEmoji = weddingEmojis[Math.floor(Math.random() * weddingEmojis.length)];
+
+            const heart = document.createElement('div');
+            heart.innerHTML = randomEmoji;
+            heart.style.position = 'fixed';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.fontSize = Math.random() * 20 + 25 + 'px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1000';
+            heart.style.animation = 'weddingFloat 4s ease-out forwards';
+            heart.style.userSelect = 'none';
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 4000);
+        }
+
+        function startHeartRain() {
+            setInterval(() => {
+                if (Math.random() < 0.7) { // 70% chance
+                    const x = Math.random() * window.innerWidth;
+                    createWeddingHeart(x, -50);
+                }
+            }, 1000);
+        }
+
+        function throwConfetti() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * (window.innerHeight / 2);
+                    createConfetti(x, y);
+                }, i * 50);
+            }
+        }
+
+        function createConfetti(x, y) {
+            const confetti = document.createElement('div');
+            confetti.innerHTML = '🎊';
+            confetti.style.position = 'fixed';
+            confetti.style.left = x + 'px';
+            confetti.style.top = y + 'px';
+            confetti.style.fontSize = '30px';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = '1000';
+            confetti.style.animation = 'confettiFall 3s ease-out forwards';
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                if (confetti.parentNode) {
+                    confetti.remove();
+                }
+            }, 3000);
+        }
+
+        function playWeddingBells() {
+            // Play bell sound effect
+            const bellAudio = document.getElementById('bellSound');
+            if (bellAudio) {
+                bellAudio.currentTime = 0; // Reset to start
+                bellAudio.play().catch(e => console.log('Audio play failed:', e));
+            }
+
+            // Visual bell effect
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const bell = document.createElement('div');
+                    bell.innerHTML = '🔔';
+                    bell.style.position = 'fixed';
+                    bell.style.top = '20px';
+                    bell.style.left = '50%';
+                    bell.style.transform = 'translateX(-50%)';
+                    bell.style.fontSize = '50px';
+                    bell.style.pointerEvents = 'none';
+                    bell.style.zIndex = '1000';
+                    bell.style.animation = 'bellRing 1s ease-in-out';
+
+                    document.body.appendChild(bell);
+
+                    setTimeout(() => {
+                        if (bell.parentNode) {
+                            bell.remove();
+                        }
+                    }, 1000);
+                }, i * 200);
+            }
+        }
+
+        // Initialize wedding gallery interactions
+        function initializeWeddingGallery() {
+            const weddingPhotos = document.querySelectorAll('.wedding-photo');
+
+            weddingPhotos.forEach((photo, index) => {
+                photo.addEventListener('click', function () {
+                    const img = photo.querySelector('img');
+
+                    if (img && img.src && !img.src.includes('placeholder')) {
+                        createWeddingImageModal(img.src, img.alt);
+                    }
+                });
+            });
+        }
+
+        // Create image modal for wedding photos
+        function createWeddingImageModal(src, alt) {
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.innerHTML = `
+                <div class="modal-backdrop" onclick="closeWeddingImageModal()">
+                    <div class="modal-content" onclick="event.stopPropagation()">
+                        <img src="${src}" alt="${alt}" class="modal-image">
+                        <button class="modal-close" onclick="closeWeddingImageModal()">×</button>
+                        <div class="modal-hearts">
+                            <span>💍</span>
+                            <span>💖</span>
+                            <span>🌹</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Add click event listener for backdrop
+            const backdrop = modal.querySelector('.modal-backdrop');
+            backdrop.addEventListener('click', function (e) {
+                if (e.target === backdrop) {
+                    closeWeddingImageModal();
+                }
+            });
+
+            // Prevent clicks on modal content from closing the modal
+            const content = modal.querySelector('.modal-content');
+            content.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+
+            // Add keyboard event listener for ESC key
+            const handleKeyDown = function (e) {
+                if (e.key === 'Escape') {
+                    closeWeddingImageModal();
+                }
+            };
+
+            // Store the handler on the modal element so we can remove it later
+            modal.keyDownHandler = handleKeyDown;
+            document.addEventListener('keydown', handleKeyDown);
+
+            // Focus the modal for better accessibility
+            modal.setAttribute('tabindex', '-1');
+            modal.focus();
+        }
+
+        function closeWeddingImageModal() {
+            const modal = document.querySelector('.image-modal');
+            if (modal) {
+                // Remove the keyboard event listener
+                if (modal.keyDownHandler) {
+                    document.removeEventListener('keydown', modal.keyDownHandler);
+                }
+
+                modal.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            }
+        }
+
+
+        // Add all the animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes weddingFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1) rotate(0deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-200px) scale(0.3) rotate(720deg);
+                }
+            }
+            
+            @keyframes confettiFall {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) rotate(0deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(300px) rotate(360deg);
+                }
+            }
+            
+            @keyframes bellRing {
+                0%, 100% { transform: translateX(-50%) rotate(0deg); }
+                25% { transform: translateX(-50%) rotate(-15deg); }
+                75% { transform: translateX(-50%) rotate(15deg); }
+            }
+            
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .family-yes-btn:hover {
+                transform: scale(1.05) !important;
+                box-shadow: 0 12px 35px rgba(255, 107, 157, 0.6) !important;
+            }
+            
+            .family-no-btn:hover {
+                transform: scale(1.05) !important;
+                box-shadow: 0 12px 35px rgba(231, 76, 60, 0.6) !important;
+            }
+            
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+            
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+            
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+            
+            @keyframes slideUp {
+                from {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-20px);
+                }
+            }
+
+            .music-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+            }
+            
+            .music-toggle button {
+                background: rgba(255, 107, 157, 0.9);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 25px;
+                font-size: 14px;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+            }
+            
+            .music-toggle button:hover {
+                background: rgba(255, 107, 157, 1);
+            }
+            
+            .image-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2000;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            .modal-backdrop {
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+            
+            .modal-content {
+                position: relative;
+                max-width: 90%;
+                max-height: 90%;
+                cursor: default;
+            }
+            
+            .modal-image {
+                max-width: min(800px, 90vw);
+                max-height: min(600px, 80vh);
+                width: auto;
+                height: auto;
+                border-radius: 15px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            }
+            
+            .modal-close {
+                position: absolute;
+                top: -15px;
+                right: -15px;
+                background: #ff6b9d;
+                color: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 24px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .modal-close:hover {
+                background: #e91e63;
+                transform: scale(1.1);
+            }
+            
+            .modal-hearts {
+                position: absolute;
+                bottom: -20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 10px;
+                font-size: 24px;
+            }
+            
+            .modal-hearts span {
+                animation: bounce 1s ease-in-out infinite;
+            }
+            
+            .modal-hearts span:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            
+            .modal-hearts span:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function (e) {
+            if (e.key.toLowerCase() === 'c') throwConfetti();
+            if (e.key.toLowerCase() === 'b') playWeddingBells();
+        });
+
+        console.log('💍 Congratulations! You\'re getting married! 💍');
+        console.log('🎉 Keyboard shortcuts: C for confetti, B for bells, M for message! 🎉');
+
+        // 💖 Romantic Emoji Rain
+function startRomanticRain() {
+
+    const emojis = ["💍", "💐", "👩‍❤️‍👨", "👫"];
+
+    setInterval(() => {
+
+        const emoji = document.createElement("div");
+        emoji.className = "romantic-rain";
+
+        // Random emoji
+        emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+        // Random horizontal position
+        emoji.style.left = Math.random() * window.innerWidth + "px";
+
+        // Random size
+        emoji.style.fontSize = (18 + Math.random() * 30) + "px";
+
+        // Random speed
+        const duration = 4 + Math.random() * 5;
+        emoji.style.animationDuration = duration + "s";
+
+        document.body.appendChild(emoji);
+
+        // Remove after animation ends
+        setTimeout(() => {
+            emoji.remove();
+        }, duration * 6000);
+
+    }, 250); // new emoji every 180ms
+}
+
+    </script>
+
+    <style>
+        .top-video {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .top-video video {
+            max-width: 600px;
+            width: 90%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(41, 105, 231, 0.3);
+        }
+
+        /* 💖 Romantic Emoji Rain */
+.romantic-rain {
+    position: fixed;
+    top: -60px;
+    pointer-events: none;
+    z-index: 998;
+    animation: romanticFall linear forwards;
+}
+
+@keyframes romanticFall {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg) scale(1.3);
+        opacity: 0.9;
+    }
+}
+
+    </style>
+</body>
+
+</html>

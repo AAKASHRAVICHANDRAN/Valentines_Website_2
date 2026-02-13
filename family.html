@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Beautiful Family! 👨‍👩‍👧‍👦</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="married-page-container">
+        <div class="wedding-hearts">
+            <div class="heart">👶</div>
+            <div class="heart">👧</div>
+            <div class="heart">👦</div>
+            <div class="heart">👨‍👩‍👧‍👦</div>
+            <div class="heart">💕</div>
+            <div class="heart">🌟</div>
+        </div>
+
+        <div class="married-content">
+            <!-- Family Photos Collage - Circular Design -->
+            <div class="valentine-collage">
+                <div class="circular-collage">
+                    <!-- Center Text -->
+                    <div class="center-text">
+                        <h1 class="valentine-title-center">Our Beautiful Family</h1>
+                        
+                    </div>
+
+                    <!-- Photos arranged in circle -->
+                    <div class="photo-circle photo-1" data-kid="1">
+                        <img src="images/Mother.jpg" alt="Child photo" class="circle-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="circle-placeholder">
+                            <span>📸</span>
+                            <small>Mother</small>
+                        </div>
+                    </div>
+
+                    <div class="photo-circle photo-2" data-kid="2">
+                        <img src="images/kid2.jpg" alt="Child photo" class="circle-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="circle-placeholder">
+                            <span>📸</span>
+                            <small>Kid2</small>
+                        </div>
+                    </div>
+
+                    <div class="photo-circle photo-3" data-kid="3">
+                        <img src="images/Kid1.jpg" alt="Child photo" class="circle-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="circle-placeholder">
+                            <span>📸</span>
+                            <small>Kid1</small>
+                        </div>
+                    </div>
+
+                    <div class="photo-circle photo-4" data-kid="4">
+                        <img src="images/Father.jpg" alt="Child photo" class="circle-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="circle-placeholder">
+                            <span>📸</span>
+                            <small>Father</small>
+                        </div>
+                    </div>
+
+                    <div class="photo-circle photo-5" data-kid="5">
+                        <img src="images/Grandfather.jpg" alt="Child photo" class="circle-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="circle-placeholder">
+                            <span>📸</span>
+                            <small>Grandfather</small>
+                        </div>
+                    </div>
+
+                    <div class="photo-circle photo-6" data-kid="6">
+                        <img src="images/Grandmother.jpg" alt="Child photo" class="circle-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="circle-placeholder">
+                            <span>📸</span>
+                            <small>Grandmother</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="romantic-note">
+                <p>💕 You both are our miracles, a blessing, and the greatest joy of our lives 💕</p>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="back-btn" onclick="goBack()">
+                    ← Back to wedding
+                </button>
+
+                <button class="home-btn" onclick="goHome()">
+                    🏠 Start over
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="music/FamilyBGM.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Mobile Music Play Button -->
+    <div id="musicToggle" class="music-toggle" style="display: none;">
+        <button onclick="playMusic()" id="musicBtn">🎵 Play Music</button>
+    </div>
+
+    <script>
+        // Mobile-friendly music handling
+        let musicPlaying = false;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicBtn = document.getElementById('musicBtn');
+
+        // Try autoplay on desktop - show button if autoplay fails (mobile)
+        backgroundMusic.play().then(() => {
+            musicPlaying = true;
+            // Limit music to 200 seconds
+            setTimeout(() => {
+                if (musicPlaying) {
+                    backgroundMusic.pause();
+                    musicPlaying = false;
+                }
+            }, 200000);
+        }).catch(() => {
+            // Autoplay failed (mobile), show play button
+            document.getElementById('musicToggle').style.display = 'block';
+        });
+
+        function playMusic() {
+            if (!musicPlaying) {
+                backgroundMusic.play();
+                musicPlaying = true;
+                document.getElementById('musicToggle').style.display = 'none';
+                // Limit music to 200 seconds
+                setTimeout(() => {
+                    if (musicPlaying) {
+                        backgroundMusic.pause();
+                        musicPlaying = false;
+                    }
+                }, 200000);
+            }
+        }
+
+
+        // Simple celebration when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            createSimpleCelebration();
+            initializeKidsGallery();
+            startStarRain();
+        });
+
+        function goBack() {
+            window.location.href = 'married.html';
+        }
+
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        function createSimpleCelebration() {
+            // Simple heart celebration
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    createFamilyHeart(x, y);
+                }, i * 200);
+            }
+        }
+
+        function createFamilyHeart(x, y) {
+            const familyEmojis = ['👶', '👧', '👦', '💕', '🌟'];
+            const randomEmoji = familyEmojis[Math.floor(Math.random() * familyEmojis.length)];
+
+            const heart = document.createElement('div');
+            heart.innerHTML = randomEmoji;
+            heart.style.position = 'fixed';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.fontSize = '25px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1000';
+            heart.style.animation = 'simpleFloat 3s ease-out forwards';
+            heart.style.userSelect = 'none';
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 3000);
+        }
+
+        // ⭐ Start Falling Star Rain
+        function startStarRain() {
+        setInterval(() => {
+        const star = document.createElement("div");
+        star.className = "star-rain";
+        star.innerHTML = "⭐";
+
+        // Random horizontal position
+        star.style.left = Math.random() * window.innerWidth + "px";
+
+        // Random size
+        star.style.fontSize = (14 + Math.random() * 20) + "px";
+
+        // Random speed
+        const duration = 4 + Math.random() * 4;
+        star.style.animationDuration = duration + "s";
+
+        document.body.appendChild(star);
+
+        // Remove after animation ends
+        setTimeout(() => {
+            star.remove();
+        }, duration * 1000);
+
+        }, 200); // new star every 200ms
+    }
+
+
+        // Initialize kids gallery interactions
+        function initializeKidsGallery() {
+            const photoCircles = document.querySelectorAll('.photo-circle');
+
+            photoCircles.forEach((circle, index) => {
+                circle.addEventListener('click', function () {
+                    const img = circle.querySelector('.circle-image');
+
+                    if (img && img.style.display !== 'none') {
+                        createImageModal(img.src, img.alt);
+                    } else {
+                        showUploadHint(circle);
+                    }
+                });
+            });
+        }
+
+        // Create image modal
+        function createImageModal(src, alt) {
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.innerHTML = `
+                <div class="modal-backdrop">
+                    <div class="modal-content">
+                        <img src="${src}" alt="${alt}" class="modal-image">
+                        <button class="modal-close" onclick="closeImageModal()">×</button>
+                        <div class="modal-hearts">
+                            <span>💕</span>
+                            <span>👶</span>
+                            <span>🌟</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Add click event listener for backdrop
+            const backdrop = modal.querySelector('.modal-backdrop');
+            backdrop.addEventListener('click', function (e) {
+                if (e.target === backdrop) {
+                    closeImageModal();
+                }
+            });
+
+            // Prevent clicks on modal content from closing the modal
+            const content = modal.querySelector('.modal-content');
+            content.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+
+            // Add keyboard event listener for ESC key
+            const handleKeyDown = function (e) {
+                if (e.key === 'Escape') {
+                    closeImageModal();
+                }
+            };
+
+            // Store the handler on the modal element so we can remove it later
+            modal.keyDownHandler = handleKeyDown;
+            document.addEventListener('keydown', handleKeyDown);
+
+            // Focus the modal for better accessibility
+            modal.setAttribute('tabindex', '-1');
+            modal.focus();
+        }
+
+        function closeImageModal() {
+            const modal = document.querySelector('.image-modal');
+            if (modal) {
+                // Remove the keyboard event listener
+                if (modal.keyDownHandler) {
+                    document.removeEventListener('keydown', modal.keyDownHandler);
+                }
+
+                modal.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            }
+        }
+
+        function showUploadHint(circle) {
+            const hint = document.createElement('div');
+            hint.className = 'upload-hint';
+            hint.innerHTML = `
+                <div class="hint-content">
+                    <span>📸</span>
+                    <p>To add your child's photo:</p>
+                    <ol>
+                        <li>Save your image as "kid${circle.dataset.kid}.jpg"</li>
+                        <li>Place it in the "images" folder</li>
+                        <li>Refresh the page</li>
+                    </ol>
+                    <button onclick="closeUploadHint()">Got it! 💕</button>
+                </div>
+            `;
+            document.body.appendChild(hint);
+        }
+
+        function closeUploadHint() {
+            const hint = document.querySelector('.upload-hint');
+            if (hint) hint.remove();
+        }
+
+        // Add simple animation styles and modal styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes simpleFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100px) scale(0.5);
+                }
+            }
+
+            .music-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+            }
+            
+            .music-toggle button {
+                background: rgba(255, 107, 157, 0.9);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 25px;
+                font-size: 14px;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+            }
+            
+            .music-toggle button:hover {
+                background: rgba(255, 107, 157, 1);
+            }
+            
+            .image-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2000;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            .modal-backdrop {
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+            
+            .modal-content {
+                position: relative;
+                max-width: 90%;
+                max-height: 90%;
+                cursor: default;
+            }
+            
+            .modal-image {
+                max-width: min(800px, 90vw);
+                max-height: min(600px, 80vh);
+                width: auto;
+                height: auto;
+                border-radius: 15px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            }
+            
+            .modal-close {
+                position: absolute;
+                top: -15px;
+                right: -15px;
+                background: #ff6b9d;
+                color: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 24px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .modal-close:hover {
+                background: #e91e63;
+                transform: scale(1.1);
+            }
+            
+            .modal-hearts {
+                position: absolute;
+                bottom: -20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 10px;
+                font-size: 24px;
+            }
+            
+            .modal-hearts span {
+                animation: bounce 1s ease-in-out infinite;
+            }
+            
+            .modal-hearts span:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            
+            .modal-hearts span:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        console.log('👨‍👩‍👧‍👦 Welcome to our family! 👨‍👩‍👧‍👦');
+
+        let scrollDirection = 1;
+        let scrollSpeed = 1; // increase for faster scroll
+
+        function autoScroll() {
+
+        window.scrollBy(0, scrollSpeed * scrollDirection);
+
+        const bottomReached =
+        (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 2;
+
+        const topReached = window.scrollY <= 0;
+
+        if (bottomReached) {
+        scrollDirection = -1; // go up
+        }
+
+        if (topReached) {
+        scrollDirection = 1; // go down
+        }
+    }
+
+        // Smooth loop
+        setInterval(autoScroll, 15);
+
+    </script>
+
+    <style>
+
+        /* ⭐ Falling Star Rain */
+        .star-rain {
+        position: fixed;
+        top: -60px;
+        pointer-events: none;
+        z-index: 998;
+        animation: starFall linear forwards;
+        }
+
+        @keyframes starFall {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+            transform: translateY(110vh) rotate(720deg) scale(0.7);
+            opacity: 0.8;
+            }
+        }
+
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect! 💕</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="yes-page-container">
+        <div class="celebration-hearts">
+            <div class="heart">💖</div>
+            <div class="heart">💕</div>
+            <div class="heart">💗</div>
+            <div class="heart">💝</div>
+            <div class="heart">🌹</div>
+            <div class="heart">✨</div>
+            <div class="heart">🥰</div>
+            <div class="heart">😍</div>
+        </div>
+
+        <div class="yes-content">
+            <h1 class="celebration-title">Perfect! 🎉</h1>
+
+            <div class="top-video">
+    <video autoplay muted loop playsinline>
+        <source src="videos/Jolly_teddy.mp4" type="video/mp4">
+    </video>
+</div>
+
+            <div class="success-message">
+                <p class="main-text">I Love You Lusu😍😘🥰</p>
+                <p class="sub-text">Get ready for an amazing journey together...</p>
+            </div>
+
+            <div class="celebration-icons">
+                🍾 🌹 🍽️ 💃 🕺 🥂
+            </div>
+
+            <!-- Photo Gallery Section -->
+            <div class="photo-gallery">
+                <h3 class="gallery-title">Create Memories and add here📸</h3>
+                <div class="gallery-grid">
+                    <div class="photo-slot" data-photo="6">
+                        <img src="images/photo6.jpg" alt="Beautiful memory" class="gallery-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="photo-placeholder">
+                            <span>💕</span>
+                            <p>Add photo here</p>
+                        </div>
+                    </div>
+                    <div class="photo-slot" data-photo="7">
+                        <img src="images/photo7.jpg" alt="Beautiful memory" class="gallery-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="photo-placeholder">
+                            <span>🌹</span>
+                            <p>Add photo here</p>
+                        </div>
+                    </div>
+                    <div class="photo-slot" data-photo="8">
+                        <img src="images/photo8.jpg" alt="Beautiful memory" class="gallery-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="photo-placeholder">
+                            <span>💖</span>
+                            <p>Add photo here</p>
+                        </div>
+                    </div>
+                    <div class="photo-slot" data-photo="9">
+                        <img src="images/photo9.jpg" alt="Beautiful memory" class="gallery-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="photo-placeholder">
+                            <span>🥰</span>
+                            <p>Add photo here</p>
+                        </div>
+                    </div>
+                    <div class="photo-slot" data-photo="10">
+                        <img src="images/photo10.jpg" alt="Beautiful memory" class="gallery-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="photo-placeholder">
+                            <span>✨</span>
+                            <p>Add photo here</p>
+                        </div>
+                    </div>
+                    <div class="photo-slot" data-photo="11">
+                        <img src="images/photo11.jpg" alt="Beautiful memory" class="gallery-image"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="photo-placeholder">
+                            <span>🌟</span>
+                            <p>Add photo here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="love-note">
+                <blockquote>
+                    "Every moment with you is a celebration, just chapter after chapter of fun!" 💖
+                </blockquote>
+            </div>
+
+            <!-- Marriage Proposal Section -->
+            <div class="proposal-section">
+                <div class="proposal-transition">
+                    <p class="transition-text">Looks like we are really hitting it off... 😍</p>
+                    <div class="ring-icon">💍</div>
+                </div>
+
+                <div class="proposal-question">
+                    <h2 class="proposal-title">Will you marry me? 💕</h2>
+                </div>
+
+                <!-- Proposal Response Buttons -->
+                <div class="proposal-response-section">
+                    <button id="proposalYesBtn" class="proposal-yes-btn" onclick="goToMarriagePage()">
+                        Yes! Forever! 💍
+                    </button>
+
+                    <button id="proposalNoBtn" class="proposal-no-btn">
+                        No
+                    </button>
+                </div>
+
+                <div class="proposal-note">
+                    <p>✨ I promise to love you for all eternity ✨</p>
+                </div>
+            </div>
+
+            <button class="back-btn" onclick="goBack()">
+                ← Back to invitation
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="music/Yes_music.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Mobile Music Play Button -->
+    <div id="musicToggle" class="music-toggle" style="display: none;">
+        <button onclick="playMusic()" id="musicBtn">🎵 Play Music</button>
+    </div>
+
+    <script>
+        // Mobile-friendly music handling
+        let musicPlaying = false;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicBtn = document.getElementById('musicBtn');
+
+        // Try autoplay on desktop - show button if autoplay fails (mobile)
+        backgroundMusic.play().then(() => {
+            musicPlaying = true;
+            // Limit music to 200 seconds
+            setTimeout(() => {
+                if (musicPlaying) {
+                    backgroundMusic.pause();
+                    musicPlaying = false;
+                }
+            }, 200000);
+        }).catch(() => {
+            // Autoplay failed (mobile), show play button
+            document.getElementById('musicToggle').style.display = 'block';
+        });
+
+        function playMusic() {
+            if (!musicPlaying) {
+                backgroundMusic.play();
+                musicPlaying = true;
+                document.getElementById('musicToggle').style.display = 'none';
+                // Limit music to 200 seconds
+                setTimeout(() => {
+                    if (musicPlaying) {
+                        backgroundMusic.pause();
+                        musicPlaying = false;
+                    }
+                }, 200000);
+            }
+        }
+
+
+        // Add celebration effects when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            createCelebrationBurst();
+            initializeProposalNoButton();
+            initializePhotoGallery();
+            startRoseRain();
+
+
+            // Add click effects
+            document.addEventListener('click', function (e) {
+                if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'IMG') {
+                    createFloatingHeart(e.clientX, e.clientY);
+                }
+            });
+        });
+
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        function goToMarriagePage() {
+            window.location.href = 'married.html';
+        }
+
+        // Initialize the impossible "No" button for proposal
+        function initializeProposalNoButton() {
+            const noBtn = document.getElementById('proposalNoBtn');
+            if (!noBtn) return;
+
+            let attemptCount = 0;
+            const funnyMessages = [
+                "Nice try! But that's not an option! 😄",
+                "Please🥺😭",
+                "Nope! The 'No' button is broken! 🔧",
+                "Error 404: 'No' not found! 💕",
+                "Sorry, only 'Yes' is available! 😉",
+                "The 'No' button has been disabled by love! 💖",
+                "Try again! Hint: the answer is 'Yes'! 🥰",
+                "Computer says no... to your 'No'! 💻",
+                "This button is out of order! ⚠️",
+            ];
+
+            // Disable the button completely and make it funny
+            noBtn.addEventListener('mouseenter', function () {
+                showFunnyMessage();
+                shakeButton();
+            });
+
+            noBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                showFunnyMessage();
+                shakeButton();
+                attemptCount++;
+
+                if (attemptCount >= 3) {
+                    transformProposalNoButton();
+                }
+            });
+
+            function showFunnyMessage() {
+                const randomMessage = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+                showTemporaryMessage(randomMessage);
+            }
+
+            function shakeButton() {
+                noBtn.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    noBtn.style.animation = '';
+                }, 500);
+            }
+
+            function transformProposalNoButton() {
+                noBtn.textContent = "Fine... YES! 💍";
+                noBtn.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+                noBtn.style.animation = 'pulse 1s ease-in-out infinite';
+                noBtn.onclick = goToMarriagePage;
+
+                showTemporaryMessage("That's more like it! 😍");
+            }
+        }
+
+        function createCelebrationBurst() {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const angle = (i * 24) * Math.PI / 180;
+                    const distance = 100 + Math.random() * 100;
+                    const x = centerX + Math.cos(angle) * distance;
+                    const y = centerY + Math.sin(angle) * distance;
+
+                    createFloatingHeart(x, y);
+                }, i * 150);
+            }
+        }
+
+        function createFloatingHeart(x, y) {
+            const hearts = ['💖', '💕', '💗', '💝', '🌹', '✨', '🥰', '😍', '🎉', '💍'];
+            const randomHeart = hearts[Math.floor(Math.random() * hearts.length)];
+
+            const heart = document.createElement('div');
+            heart.innerHTML = randomHeart;
+            heart.style.position = 'fixed';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.fontSize = Math.random() * 15 + 20 + 'px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1000';
+            heart.style.animation = 'floatUp 3s ease-out forwards';
+            heart.style.userSelect = 'none';
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 3000);
+        }
+
+        // Show temporary message
+        function showTemporaryMessage(text) {
+            const message = document.createElement('div');
+            message.textContent = text;
+            message.style.position = 'fixed';
+            message.style.top = '20px';
+            message.style.left = '50%';
+            message.style.transform = 'translateX(-50%)';
+            message.style.background = 'rgba(233, 30, 99, 0.9)';
+            message.style.color = 'white';
+            message.style.padding = '1rem 2rem';
+            message.style.borderRadius = '25px';
+            message.style.fontSize = '1.2rem';
+            message.style.fontFamily = 'Dancing Script, cursive';
+            message.style.fontWeight = '700';
+            message.style.zIndex = '2000';
+            message.style.animation = 'slideDown 0.5s ease-out';
+
+            document.body.appendChild(message);
+
+            setTimeout(() => {
+                message.style.animation = 'slideUp 0.5s ease-in';
+                setTimeout(() => {
+                    message.remove();
+                }, 500);
+            }, 2500);
+        }
+
+        // Initialize photo gallery interactions
+        function initializePhotoGallery() {
+            const photoSlots = document.querySelectorAll('.photo-slot');
+
+            photoSlots.forEach((slot, index) => {
+                slot.addEventListener('click', function () {
+                    const img = slot.querySelector('.gallery-image');
+
+                    if (img && img.style.display !== 'none') {
+                        createImageModal(img.src, img.alt);
+                    } else {
+                        showUploadHint(slot);
+                    }
+                });
+            });
+        }
+
+        // Create image modal
+        function createImageModal(src, alt) {
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.innerHTML = `
+                <div class="modal-backdrop">
+                    <div class="modal-content">
+                        <img src="${src}" alt="${alt}" class="modal-image">
+                        <button class="modal-close" onclick="closeImageModal()">×</button>
+                        <div class="modal-hearts">
+                            <span>💖</span>
+                            <span>💕</span>
+                            <span>💍</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Add click event listener for backdrop
+            const backdrop = modal.querySelector('.modal-backdrop');
+            backdrop.addEventListener('click', function (e) {
+                if (e.target === backdrop) {
+                    closeImageModal();
+                }
+            });
+
+            // Prevent clicks on modal content from closing the modal
+            const content = modal.querySelector('.modal-content');
+            content.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+
+            // Add keyboard event listener for ESC key
+            const handleKeyDown = function (e) {
+                if (e.key === 'Escape') {
+                    closeImageModal();
+                }
+            };
+
+            // Store the handler on the modal element so we can remove it later
+            modal.keyDownHandler = handleKeyDown;
+            document.addEventListener('keydown', handleKeyDown);
+
+            // Focus the modal for better accessibility
+            modal.setAttribute('tabindex', '-1');
+            modal.focus();
+        }
+
+        function closeImageModal() {
+            const modal = document.querySelector('.image-modal');
+            if (modal) {
+                // Remove the keyboard event listener
+                if (modal.keyDownHandler) {
+                    document.removeEventListener('keydown', modal.keyDownHandler);
+                }
+
+                modal.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            }
+        }
+
+        function showUploadHint(slot) {
+            const hint = document.createElement('div');
+            hint.className = 'upload-hint';
+            hint.innerHTML = `
+                <div class="hint-content">
+                    <span>📸</span>
+                    <p>To add your photo:</p>
+                    <ol>
+                        <li>Save your image as "photo${slot.dataset.photo}.jpg"</li>
+                        <li>Place it in the "images" folder</li>
+                        <li>Refresh the page</li>
+                    </ol>
+                    <button onclick="closeUploadHint()">Got it! 💕</button>
+                </div>
+            `;
+            document.body.appendChild(hint);
+        }
+
+        function closeUploadHint() {
+            const hint = document.querySelector('.upload-hint');
+            if (hint) hint.remove();
+        }
+
+        // Add floating animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1) rotate(0deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-150px) scale(0.5) rotate(360deg);
+                }
+            }
+            
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+            
+            @keyframes slideUp {
+                from {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-20px);
+                }
+            }
+            
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+
+            .music-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+            }
+            
+            .music-toggle button {
+                background: rgba(255, 107, 157, 0.9);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 25px;
+                font-size: 14px;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+            }
+            
+            .music-toggle button:hover {
+                background: rgba(255, 107, 157, 1);
+            }
+            
+            .image-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2000;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            .modal-backdrop {
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+            
+            .modal-content {
+                position: relative;
+                max-width: 90%;
+                max-height: 90%;
+                cursor: default;
+            }
+            
+            .modal-image {
+                max-width: min(800px, 90vw);
+                max-height: min(600px, 80vh);
+                width: auto;
+                height: auto;
+                border-radius: 15px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            }
+            
+            .modal-close {
+                position: absolute;
+                top: -15px;
+                right: -15px;
+                background: #ff6b9d;
+                color: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                font-size: 24px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .modal-close:hover {
+                background: #e91e63;
+                transform: scale(1.1);
+            }
+            
+            .modal-hearts {
+                position: absolute;
+                bottom: -20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 10px;
+                font-size: 24px;
+            }
+            
+            .modal-hearts span {
+                animation: bounce 1s ease-in-out infinite;
+            }
+            
+            .modal-hearts span:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            
+            .modal-hearts span:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 🌹 Start Falling Rose Rain
+function startRoseRain() {
+    setInterval(() => {
+        const rose = document.createElement("div");
+        rose.className = "rose-rain";
+        rose.innerHTML = "🌹";
+
+        // Random horizontal position
+        rose.style.left = Math.random() * window.innerWidth + "px";
+
+        // Random size
+        rose.style.fontSize = (18 + Math.random() * 25) + "px";
+
+        // Random speed
+        const duration = 5 + Math.random() * 5;
+        rose.style.animationDuration = duration + "s";
+
+        document.body.appendChild(rose);
+
+        // Remove after animation ends
+        setTimeout(() => {
+            rose.remove();
+        }, duration * 8000);
+
+    }, 150); // new rose every 350ms
+}
+
+    </script>
+    
+    <style>
+        .top-video {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.top-video video {
+    max-width: 400px;
+    width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* 🌹 Falling Rose Rain */
+.rose-rain {
+    position: fixed;
+    top: -60px;
+    pointer-events: none;
+    z-index: 999;
+    animation: roseFall linear forwards;
+}
+
+@keyframes roseFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.9;
+    }
+}
+
+
+    </style>
+</body>
+
+</html>

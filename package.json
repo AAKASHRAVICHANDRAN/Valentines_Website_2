@@ -1,0 +1,50 @@
+{
+    "name": "valentine-interactive-website",
+    "version": "1.0.0",
+    "description": "A beautiful, interactive Valentine's Day website that takes users through a romantic journey from initial invitation to marriage and family",
+    "main": "index.html",
+    "scripts": {
+        "start": "python -m http.server 8000 || python3 -m http.server 8000 || php -S localhost:8000",
+        "serve": "npx http-server . -p 8000 -o",
+        "dev": "npx live-server --port=8000 --open=index.html"
+    },
+    "keywords": [
+        "valentine",
+        "romantic",
+        "interactive",
+        "website",
+        "love",
+        "proposal",
+        "wedding",
+        "family",
+        "javascript",
+        "css",
+        "html",
+        "animations",
+        "mobile-friendly",
+        "responsive"
+    ],
+    "author": "Valentine's Day Interactive Website Contributors",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/valentine-interactive-website.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yourusername/valentine-interactive-website/issues"
+    },
+    "homepage": "https://github.com/yourusername/valentine-interactive-website#readme",
+    "devDependencies": {
+        "http-server": "^14.1.1",
+        "live-server": "^1.2.2"
+    },
+    "engines": {
+        "node": ">=12.0.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead",
+        "not ie <= 11"
+    ]
+}

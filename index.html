@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey Beautiful... 💕</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="invitation-container">
+        
+
+        <div class="invitation-content">
+            <!-- Valentine Title -->
+            <h1 class="valentine-main-title">💕Hey Sowndariya, Happy Valentines Day!💕</h1>
+
+            
+
+            <h1 class="greeting"> 💕You look gorgeous...Will You Be My Valentine?💕</h1>
+
+
+            <!-- Response Buttons -->
+            <div class="response-section">
+                <button id="yesBtn" class="yes-btn" onclick="goToYesPage()">
+                    Yes! 💕
+                </button>
+
+                <button id="noBtn" class="no-btn">
+                    No
+                </button>
+            </div>
+
+            <div class="romantic-note">
+                <p>✨ I promise it will be magical ✨</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="music/Roja_Bgm.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Mobile Music Play Button -->
+    <div id="musicToggle" class="music-toggle">
+        <h5>Click Anywhere to feel the music!😍</h5>
+        <button onclick="toggleMusic()" id="musicBtn">🎵 Play Music</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const emojis = ["💕", "💖", "💘", "💝", "❣️", "😘", "😍", "🥰"];
+
+    function createEmoji() {
+        const emoji = document.createElement("div");
+        emoji.classList.add("emoji");
+        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+        emoji.style.left = Math.random() * 100 + "vw";
+        emoji.style.fontSize = (Math.random() * 20 + 20) + "px";
+        emoji.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+            emoji.remove();
+        }, 6000);
+    }
+
+    // Create emoji every 100ms
+    setInterval(createEmoji, 100);
+        // Mobile-friendly music handling
+        let musicPlaying = false;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicBtn = document.getElementById('musicBtn');
+
+        // Try autoplay on desktop
+        backgroundMusic.play().then(() => {
+            musicPlaying = true;
+            musicBtn.textContent = '🔇 Mute Music';
+            document.getElementById('musicToggle').style.display = 'none';
+            // Limit music to 200 seconds
+            setTimeout(() => {
+                if (musicPlaying) {
+                    backgroundMusic.pause();
+                    musicPlaying = false;
+                    musicBtn.textContent = '🎵 Play Music';
+                }
+            }, 200000);
+        }).catch(() => {
+            // Autoplay failed (mobile), show play button
+            document.getElementById('musicToggle').style.display = 'block';
+        });
+
+        document.addEventListener("click", function startMusicOnce() {
+        backgroundMusic.play().then(() => {
+        musicPlaying = true;
+        musicBtn.textContent = '🔇 Mute Music';
+        }).catch((err) => {
+        console.log("Playback failed:", err);
+        });
+
+    // Remove listener after first click
+    document.removeEventListener("click", startMusicOnce);
+});
+
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                backgroundMusic.pause();
+                musicBtn.textContent = '🎵 Play Music';
+                musicPlaying = false;
+            } else {
+                backgroundMusic.play();
+                musicBtn.textContent = '🔇 Mute Music';
+                musicPlaying = true;
+                // Limit music to 200 seconds when manually started
+                setTimeout(() => {
+                    if (musicPlaying) {
+                        backgroundMusic.pause();
+                        musicPlaying = false;
+                        musicBtn.textContent = '🎵 Play Music';
+                    }
+                }, 200000);
+            }
+        }
+
+        // Auto-hide music button after first interaction
+        document.addEventListener('click', function () {
+            if (musicPlaying) {
+                setTimeout(() => {
+                    document.getElementById('musicToggle').style.opacity = '0.3';
+                }, 3000);
+            }
+        });
+    </script>
+
+    <style>
+        .emoji {
+            position: fixed;
+            top: -50px;
+            pointer-events: none;
+            animation: fall linear forwards;
+            z-index: 999;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .music-toggle button {
+            background: rgba(255, 107, 157, 0.9);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .music-toggle button:hover {
+            background: rgba(255, 107, 157, 1);
+        }
+    </style>
+</body>
+
+</html>
