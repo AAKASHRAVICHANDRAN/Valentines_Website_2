@@ -89,13 +89,12 @@ function transformNoButton() {
     // Change the button text and make it more playful
     const playfulTexts = [
         "Please🥹",
-        "Are you Sure? 💔",
-        "Pretty please? 💕",
+        "Are you Sure?💔",
+        "Please Say Yes🥺",
         "Think Again..🥺",
         "Come on...🥺",
-        "You know you want to! 😉",
-        "I'll make it worth it! 💖",
-        "Just say yes! 🌹"
+        "You know you want to!😉",
+        "I'll make it worth it!💖",
     ];
 
     const randomText = playfulTexts[Math.floor(Math.random() * playfulTexts.length)];
